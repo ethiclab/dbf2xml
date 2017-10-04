@@ -39,7 +39,9 @@ public class Main {
                 Object[] rowObjects = reader.nextRecord();
                 for (int j = 0; j < numberOfFields; j++) {
                     DBFField field = reader.getField(j);
-                    Field f = new Field(field.getName(), rowObjects[j]);
+                    Object obj = rowObjects[j];
+                    String s = cleanTextContent(obj == null ? null : obj.toString());
+                    Field f = new Field(field.getName(), s);
                     row.getFields().add(f);
                 }
                 data.getRows().add(row);
@@ -53,4 +55,28 @@ public class Main {
 			DBFUtils.close(reader);
 		}
 	}
+
+    /**
+     * @credits: https://howtodoinjava.com/regex/java-clean-ascii-text-non-printable-chars/
+     */
+    private static String cleanTextContent(String text)
+    {
+        if (text == null) {
+            return null;
+        }
+
+        text = text.replaceAll("\r\n", "\n");
+        text = text.replaceAll("\r", "\n");
+
+        // strips off all non-ASCII characters
+        text = text.replaceAll("[^\\x00-\\x7F\n\t]", "");
+
+        // removes non-printable characters from Unicode
+        text = text.replaceAll("\\p{C}&&[^\n\t]", "");
+
+        // erases all the ASCII control characters
+        text = text.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "");
+
+        return text.trim();
+    }
 }
