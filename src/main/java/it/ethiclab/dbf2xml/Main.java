@@ -25,7 +25,7 @@ public class Main {
                 char ch = suffix.charAt(suffix.length() - 1);
                 suffix = suffix.substring(0, 3) + (Character.isUpperCase(ch) ? 'T' : 't');
                 String dbtDefaultName = base + suffix;
-                File dbt = new File(Paths.get(dbf.getParentFile().getAbsolutePath(), dbtDefaultName).toString());
+                File dbt = new File(Paths.get(dbf.getAbsoluteFile().getParentFile().getAbsolutePath(), dbtDefaultName).toString());
                 if (dbt.exists()) {
                     reader.setMemoFile(dbt);
                 }
