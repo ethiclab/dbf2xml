@@ -6,12 +6,17 @@ import java.nio.file.Paths;
 
 import com.linuxense.javadbf.*;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+
 public class Main {
-	public static void main(String args[]) throws IOException {
+	public static void main(String args[]) throws Exception {
 		DBFReader reader = null;
         try {
+            String enc = "windows-1252";
+            Data data = new Data();
             File dbf = new File(args[0]);
-            reader = new DBFReader(new FileInputStream(dbf), Charset.forName("windows-1252"), false);
+            reader = new DBFReader(new FileInputStream(dbf), Charset.forName(enc), false);
             if (args.length > 1) {
                 reader.setMemoFile(new File(args[1]));
             } else if (dbf.getName().toUpperCase().endsWith(".DBF")) {
@@ -30,14 +35,21 @@ public class Main {
             int numberOfRecords = reader.getRecordCount();
 
             for (int i = 0; i < numberOfRecords - 1; i++) {
-                System.out.println(Integer.toString(i));
+                Row row = new Row();
                 Object[] rowObjects = reader.nextRecord();
                 for (int j = 0; j < numberOfFields; j++) {
                     DBFField field = reader.getField(j);
-                    System.out.println(i + " " + field.getName() + " = [" + rowObjects[j] + "]");
+                    Field f = new Field(field.getName(), rowObjects[j]);
+                    row.getFields().add(f);
                 }
+                data.getRows().add(row);
             }
-		} finally {
+
+            JAXBContext jaxbContext = JAXBContext.newInstance(Data.class);
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+            jaxbMarshaller.marshal(data, System.out );
+        } finally {
 			DBFUtils.close(reader);
 		}
 	}

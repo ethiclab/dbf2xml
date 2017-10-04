@@ -1,6 +1,6 @@
 # dbf2xml
 
-    ./run.sh FILE.DBF [FILE.DBT]
+    ./run.sh FILE.DBF [FILE.DBT] > FILE.xml
 
 # dependency
 
