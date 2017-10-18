@@ -34,7 +34,7 @@ public class Main {
             int numberOfFields = reader.getFieldCount();
             int numberOfRecords = reader.getRecordCount();
 
-            for (int i = 0; i < numberOfRecords - 1; i++) {
+            for (int i = 0; i < numberOfRecords; i++) {
                 Row row = new Row();
                 Object[] rowObjects = reader.nextRecord();
                 for (int j = 0; j < numberOfFields; j++) {
