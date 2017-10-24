@@ -39,10 +39,14 @@ public class Main {
                 Object[] rowObjects = reader.nextRecord();
                 for (int j = 0; j < numberOfFields; j++) {
                     DBFField field = reader.getField(j);
+if (rowObjects != null) {
                     Object obj = rowObjects[j];
                     String s = cleanTextContent(obj == null ? null : obj.toString());
                     Field f = new Field(field.getName(), s);
                     row.getFields().add(f);
+} else {
+    System.err.println("Error reading row " + i);
+}
                 }
                 data.getRows().add(row);
             }
