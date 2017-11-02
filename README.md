@@ -1,9 +1,12 @@
-# dbf2xml
+# DBF to XML
 
-    ./run.sh FILE.DBF [FILE.DBT] > FILE.xml
+    ./run.sh <entity name> it.ethiclab.dbf2xml.DataToXmlWriter FILE.xml FILE.DBF [FILE.DBT]
 
-# dependency
+# DBF to JDBC
 
-    git clone git@github.com:montoyaedu/javadbf.git
-    cd javadbf
-    mvn clean install -Dgpg.skip=true -Dadditionalparam=-Xdoclint:none
+    ./run.sh <entity name> it.ethiclab.dbf2xml.DataToJdbcWriter <jdbc url> FILE.DBF [FILE.DBT]
+
+# Acknowledgements
+
+    https://github.com/albfernandez/javadbf
+    https://github.com/infused/dbf

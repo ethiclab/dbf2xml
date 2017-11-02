@@ -8,7 +8,7 @@ public class Field {
     private Object value;
 
     public Field() {
-
+        // required default constructor.
     }
 
     public Field(String name, Object value) {

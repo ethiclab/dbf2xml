@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Row {
-    private final List<Field> fields = new ArrayList();
+    private final List<Field> fields = new ArrayList<>();
 
     @XmlElement(name="field")
     public List<Field> getFields() {
