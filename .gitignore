@@ -4,3 +4,6 @@ target/
 node_modules/
 tools/
 bower_components/
+.classpath
+.project
+.settings/
