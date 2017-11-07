@@ -7,14 +7,16 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		ArgumentReader argumentReader = new ArgumentReader(args);
-		String entityName = argumentReader.readArg();
-		String destinationType = argumentReader.readArg();
-		String destinationLocation = argumentReader.readArg();
-		String dbf = argumentReader.readArg();
-		String dbt = argumentReader.readArg();
-		Data data = new DbfToData().acquire(dbf, dbt);
+		String entityName = argumentReader.readArg("entityName");
+		String sourceType = argumentReader.readArg("sourceType");
+		String sourceLocation = argumentReader.readArg("sourceLocation");
+		String destinationType = argumentReader.readArg("destinationType");
+		String destinationLocation = argumentReader.readArg("destinationLocation");
+		DataReader reader = (DataReader) Main.class.getClassLoader()
+			.loadClass(sourceType).newInstance();
 		DataWriter writer = (DataWriter) Main.class.getClassLoader()
 			.loadClass(destinationType).newInstance();
+		Data data = reader.read(entityName, sourceLocation);
 		writer.write(entityName, destinationLocation, data);
 	}
 }

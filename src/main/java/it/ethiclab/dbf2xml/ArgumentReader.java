@@ -9,7 +9,11 @@ public class ArgumentReader {
         this.pointer = 0;
     }
 
-    public String readArg() {
-        return args.length > this.pointer ? args[pointer++] : null;
+    public String readArg(String name) {
+        String retval = args.length > this.pointer ? args[pointer++] : null;
+        if (retval == null) {
+            throw new ApplicationRuntimeException(name + " is mandatory.");
+        }
+        return retval;
     }
 }

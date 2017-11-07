@@ -5,7 +5,7 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
 
-public class DbfToData {
+public class DbfToDataReader implements DataReader {
 
     private void resolveMemoFile(DBFReader reader, File dbf) {
         String base = dbf.getName().substring(0, dbf.getName().length() - 4);
@@ -19,15 +19,18 @@ public class DbfToData {
         }
     }
 
-    public Data acquire(String dbfname, String dbtname) throws IOException {
+    @Override
+    public Data read(String entityName, String sourceSpecs) {
+        String dbfname = sourceSpecs;
         Data data = new Data();
         File dbf = new File(dbfname);
         String enc = "windows-1252";
-        DBFReader reader = new DBFReader(new FileInputStream(dbf), Charset.forName(enc), false);
+        DBFReader reader = null;
+        FileInputStream is = null;
         try {
-            if (dbtname != null) {
-                reader.setMemoFile(new File(dbtname));
-            } else if (dbf.getName().toUpperCase().endsWith(".DBF")) {
+            is = new FileInputStream(dbf);
+            reader = new DBFReader(is, Charset.forName(enc), false);
+            if (dbf.getName().toUpperCase().endsWith(".DBF")) {
                 resolveMemoFile(reader, dbf);
             }
 
@@ -47,8 +50,15 @@ public class DbfToData {
                 data.getRows().add(row);
             }
             return data;
+        } catch (IOException e) {
+            throw new ApplicationRuntimeException(e);
         } finally {
-            DBFUtils.close(reader);
+            if (is != null) {
+                DBFUtils.close(is);
+            }
+            if (reader != null) {
+                DBFUtils.close(reader);
+            }
         }
     }
 

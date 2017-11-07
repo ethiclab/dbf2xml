@@ -2,8 +2,9 @@ package it.ethiclab.dbf2xml;
 
 import java.sql.*;
 import java.util.concurrent.atomic.*;
+import java.io.*;
 
-public class DataToJdbcWriter implements DataWriter {
+public class DataToJdbcReaderWriter implements DataWriter, DataReader {
 
     private void createDatabase(Connection cn) throws SQLException {
         cn.getMetaData();
@@ -103,10 +104,20 @@ public class DataToJdbcWriter implements DataWriter {
         return insert;
     }
 
-    private void close(Statement statement) {
+    private void close(Statement closeable) {
         try {
-            if (statement != null) {
-                statement.close();
+            if (closeable != null) {
+                closeable.close();
+            }
+        } catch (SQLException e) {
+            throw new ApplicationRuntimeException(e);
+        }
+    }
+
+    private void close(ResultSet closeable) {
+        try {
+            if (closeable != null) {
+                closeable.close();
             }
         } catch (SQLException e) {
             throw new ApplicationRuntimeException(e);
@@ -123,6 +134,31 @@ public class DataToJdbcWriter implements DataWriter {
                 throw new ApplicationRuntimeException(e);
             }
         } finally {
+            close(stmt);
+        }
+    }
+
+    private void executeQuery(Data data, Connection cn, String sql, boolean ignoreExceptions) {
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = cn.createStatement();
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Row row = new Row();
+                ResultSetMetaData rsmd = rs.getMetaData();
+                for (int i = 0; i < rsmd.getColumnCount(); i++) {
+                    Field f = new Field(rsmd.getColumnName(i + 1), rs.getString(i + 1));
+                    row.getFields().add(f);
+                }
+                data.getRows().add(row);
+            }
+        } catch (SQLException e) {
+            if (!ignoreExceptions) {
+                throw new ApplicationRuntimeException(e);
+            }
+        } finally {
+            close(rs);
             close(stmt);
         }
     }
@@ -160,6 +196,22 @@ public class DataToJdbcWriter implements DataWriter {
                 if (afterSql != null) {
                     execute(cn, afterSql, false);
                 }
+            } finally {
+                cn.close();
+            }
+        } catch (Exception e) {
+            throw new ApplicationRuntimeException(e);
+        }
+    }
+
+    @Override
+    public Data read(String query, String sourceSpecs) {
+        Data data = new Data();
+        try {
+            Connection cn = DriverManager.getConnection(sourceSpecs);
+            try {
+                executeQuery(data, cn, query, false);
+                return data;
             } finally {
                 cn.close();
             }

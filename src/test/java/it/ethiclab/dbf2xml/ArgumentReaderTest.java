@@ -8,16 +8,13 @@ public class ArgumentReaderTest {
     @Test
     public void testNoArgs() {
         ArgumentReader ar = new ArgumentReader(new String[] {});
-        assertThat(ar.readArg()).isNull();
-        assertThat(ar.readArg()).isNull();
-        assertThat(ar.readArg()).isNull();
+        assertThatThrownBy(() -> ar.readArg("abc")).hasMessage("abc is mandatory.");
     }
 
     @Test
     public void testOneArgs() {
         ArgumentReader ar = new ArgumentReader(new String[] {"hello"});
-        assertThat(ar.readArg()).isEqualTo("hello");
-        assertThat(ar.readArg()).isNull();
-        assertThat(ar.readArg()).isNull();
+        assertThat(ar.readArg("abc")).isEqualTo("hello");
+        assertThatThrownBy(() -> ar.readArg("xyz")).hasMessage("xyz is mandatory.");
     }
 }

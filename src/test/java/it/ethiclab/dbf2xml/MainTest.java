@@ -26,9 +26,10 @@ public class MainTest {
         assertThat(f).doesNotExist();
         Main.main(new String[]{
             "dbase_8b",
+            "it.ethiclab.dbf2xml.DbfToDataReader",
+            "src/test/resources/dbase_8b.dbf",
             "it.ethiclab.dbf2xml.DataToXmlWriter",
-            "target/dbase_8b.xml",
-            "src/test/resources/dbase_8b.dbf"
+            "target/dbase_8b.xml"
         });
         assertThat(f).exists();
         assertThat(Utils.readFile(f.getAbsolutePath())).isEqualTo(Utils.readFile("src/test/resources/dbase_8b.xml"));
@@ -37,15 +38,17 @@ public class MainTest {
     @Test
     public void testMainWithJdbcWriter() throws Exception {
         System.setProperty("jdbc.drivers", "org.sqlite.JDBC");
+        Class.forName("org.sqlite.JDBC");
         File f = new File("target/test.db");
         f.delete();
         assertThat(f).doesNotExist();
         String url = "jdbc:sqlite:target/test.db";
         Main.main(new String[]{
             "dbase_8b",
-            "it.ethiclab.dbf2xml.DataToJdbcWriter",
-            url,
-            "src/test/resources/dbase_8b.dbf"
+            "it.ethiclab.dbf2xml.DbfToDataReader",
+            "src/test/resources/dbase_8b.dbf",
+            "it.ethiclab.dbf2xml.DataToJdbcReaderWriter",
+            url
         });
         assertThat(f).exists();
         AtomicInteger a = new AtomicInteger();
@@ -197,5 +200,23 @@ public class MainTest {
             }
         }
         assertThat(a.get()).isEqualTo(10);
+    }
+
+    @Test
+    public void testMainWithJdbcReaderAndXmlWriter() throws Exception {
+        testMainWithJdbcWriter();
+        String url = "jdbc:sqlite:target/test.db";
+        File f = new File("target/dbase_8b2.xml");
+        f.delete();
+        assertThat(f).doesNotExist();
+        Main.main(new String[]{
+            "select CHARACTER, NUMERICAL, DATE, LOGICAL, FLOAT, MEMO from dbase_8b ORDER BY ID ASC",
+            "it.ethiclab.dbf2xml.DataToJdbcReaderWriter",
+            url,
+            "it.ethiclab.dbf2xml.DataToXmlWriter",
+            "target/dbase_8b2.xml"
+        });
+        assertThat(f).exists();
+        assertThat(Utils.readFile(f.getAbsolutePath())).isEqualTo(Utils.readFile("src/test/resources/dbase_8b.xml"));
     }
 }

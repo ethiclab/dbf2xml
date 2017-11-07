@@ -8,38 +8,38 @@ public class DbfToDataTest {
 
     @Test
     public void testFileDoesNotExist() {
-        assertThatThrownBy(() -> new DbfToData().acquire("src/test/resources/doesnotexist.dbf", null))
-        .isInstanceOf(FileNotFoundException.class)
-        .hasMessage("src/test/resources/doesnotexist.dbf (No such file or directory)");
+        assertThatThrownBy(() -> new DbfToDataReader().read(null, "src/test/resources/doesnotexist.dbf"))
+        .isInstanceOf(ApplicationRuntimeException.class)
+        .hasCause(new FileNotFoundException("src/test/resources/doesnotexist.dbf (No such file or directory)"));
     }
 
     @Test
-    public void testGoodFileWithAutomaticMemo() throws IOException {
-        assertThat(new DbfToData().acquire("src/test/resources/dbase_8b.dbf", null))
+    public void testGoodFileWithAutomaticMemo() throws Exception {
+        assertThat(new DbfToDataReader().read(null, "src/test/resources/dbase_8b.dbf"))
         .isNotNull();
     }
 
     @Test
-    public void testGoodFileWithAutomaticMemoUppercase() throws IOException {
-        assertThat(new DbfToData().acquire("src/test/resources/dbase_8b1.DBF", null))
+    public void testGoodFileWithAutomaticMemoUppercase() throws Exception {
+        assertThat(new DbfToDataReader().read(null, "src/test/resources/dbase_8b1.DBF"))
         .isNotNull();
     }
 
     @Test
-    public void testGoodFileWithSpecifiedMemo() throws IOException {
-        assertThat(new DbfToData().acquire("src/test/resources/dbase_8b.dbf", "src/test/resources/dbase_8b.dbt"))
+    public void testGoodFileWithSpecifiedMemo() throws Exception {
+        assertThat(new DbfToDataReader().read(null, "src/test/resources/dbase_8b.dbf"))
         .isNotNull();
     }
 
     @Test
-    public void testGoodFileWithDifferentExtension() throws IOException {
-        assertThat(new DbfToData().acquire("src/test/resources/dbase_8b.dbf2", null))
+    public void testGoodFileWithDifferentExtension() throws Exception {
+        assertThat(new DbfToDataReader().read(null, "src/test/resources/dbase_8b.dbf2"))
         .isNotNull();
     }
 
     @Test
-    public void testGoodFileWithoutAutomaticMemo() throws IOException {
-        assertThat(new DbfToData().acquire("src/test/resources/dbase_8b0.dbf", null))
+    public void testGoodFileWithoutAutomaticMemo() throws Exception {
+        assertThat(new DbfToDataReader().read(null, "src/test/resources/dbase_8b0.dbf"))
         .isNotNull();
     }
 }
