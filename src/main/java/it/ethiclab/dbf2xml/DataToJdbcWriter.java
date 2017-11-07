@@ -12,20 +12,27 @@ public class DataToJdbcWriter implements DataWriter {
     private String buildCreateTableSqlStatement(String entityName, Data data) {
         StringBuilder sb = new StringBuilder();
         sb.append("CREATE TABLE ");
+        sb.append('"');
         sb.append(entityName);
+        sb.append('"');
         sb.append(' ');
         sb.append('(');
         sb.append('\n');
         sb.append('\t');
-        sb.append("ID integer PRIMARY KEY");
+        sb.append('"');
+        sb.append("ID");
+        sb.append('"');
+        sb.append(' ');
+        sb.append("INTEGER PRIMARY KEY");
         sb.append('\n');
         data.getRows().get(0).getFields().stream().forEachOrdered(row -> {
             sb.append('\t');
             sb.append(',');
-            sb.append("F_");
-            sb.append(row.getName().toUpperCase());
+            sb.append('"');
+            sb.append(row.getName());
+            sb.append('"');
             sb.append(' ');
-            sb.append("text");
+            sb.append("TEXT");
             sb.append('\n');
         });
         sb.append(')');
@@ -36,7 +43,9 @@ public class DataToJdbcWriter implements DataWriter {
     private String buildDropTableSqlStatement(String entityName) {
         StringBuilder sb = new StringBuilder();
         sb.append("DROP TABLE ");
+        sb.append('"');
         sb.append(entityName);
+        sb.append('"');
         sb.append(';');
         return sb.toString();
     }
@@ -44,18 +53,23 @@ public class DataToJdbcWriter implements DataWriter {
     private PreparedStatement buildInsertStatement(Connection cn, String entityName, int id, Row row) throws SQLException {
         StringBuilder sb = new StringBuilder();
         sb.append("INSERT INTO ");
+        sb.append('"');
         sb.append(entityName);
+        sb.append('"');
         sb.append(' ');
         sb.append('(');
         sb.append('\n');
         sb.append('\t');
+        sb.append('"');
         sb.append("ID");
+        sb.append('"');
         sb.append('\n');
         row.getFields().stream().forEachOrdered(f -> {
             sb.append('\t');
             sb.append(',');
-            sb.append("F_");
-            sb.append(f.getName().toUpperCase());
+            sb.append('"');
+            sb.append(f.getName());
+            sb.append('"');
             sb.append('\n');
         });
         sb.append(')');
