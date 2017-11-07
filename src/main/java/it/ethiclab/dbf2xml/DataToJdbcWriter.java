@@ -142,6 +142,10 @@ public class DataToJdbcWriter implements DataWriter {
                     AtomicInteger a = new AtomicInteger();
                     data.getRows().forEach(row -> insertRow(cn, entityName, a.incrementAndGet(), row));
                 }
+                String afterSql = System.getProperty("sql.postExecution");
+                if (afterSql != null) {
+                    execute(cn, afterSql, false);
+                }
             } finally {
                 cn.close();
             }
