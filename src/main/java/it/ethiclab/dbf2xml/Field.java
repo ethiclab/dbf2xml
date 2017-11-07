@@ -5,13 +5,13 @@ import javax.xml.bind.annotation.XmlAttribute;
 public class Field {
 
     private String name;
-    private Object value;
+    private String value;
 
     public Field() {
         // required default constructor.
     }
 
-    public Field(String name, Object value) {
+    public Field(String name, String value) {
         this.setName(name);
         this.setValue(value);
     }
@@ -25,11 +25,12 @@ public class Field {
         this.name = name;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    @XmlAttribute
+    public void setValue(String value) {
         this.value = value;
     }
 }

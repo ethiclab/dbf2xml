@@ -1,179 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">One</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1.00</value>
-        </field>
-        <field name="DATE">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Thu Jan 01 00:00:00 CET 1970</value>
-        </field>
-        <field name="LOGICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">true</value>
-        </field>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1.234567890123460000</value>
-        </field>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">First memo</value>
-        </field>
+        <field name="CHARACTER" value="One"/>
+        <field name="NUMERICAL" value="1.00"/>
+        <field name="DATE" value="Thu Jan 01 00:00:00 CET 1970"/>
+        <field name="LOGICAL" value="true"/>
+        <field name="FLOAT" value="1.234567890123460000"/>
+        <field name="MEMO" value="First memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Two</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">2.00</value>
-        </field>
-        <field name="DATE">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Thu Dec 31 00:00:00 CET 1970</value>
-        </field>
-        <field name="LOGICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">true</value>
-        </field>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">2.000000000000000000</value>
-        </field>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Second memo</value>
-        </field>
+        <field name="CHARACTER" value="Two"/>
+        <field name="NUMERICAL" value="2.00"/>
+        <field name="DATE" value="Thu Dec 31 00:00:00 CET 1970"/>
+        <field name="LOGICAL" value="true"/>
+        <field name="FLOAT" value="2.000000000000000000"/>
+        <field name="MEMO" value="Second memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Three</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">3.00</value>
-        </field>
-        <field name="DATE">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Tue Jan 01 00:00:00 CET 1980</value>
-        </field>
+        <field name="CHARACTER" value="Three"/>
+        <field name="NUMERICAL" value="3.00"/>
+        <field name="DATE" value="Tue Jan 01 00:00:00 CET 1980"/>
         <field name="LOGICAL"/>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">3.000000000000000000</value>
-        </field>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Third memo</value>
-        </field>
+        <field name="FLOAT" value="3.000000000000000000"/>
+        <field name="MEMO" value="Third memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Four</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">4.00</value>
-        </field>
-        <field name="DATE">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Mon Jan 01 00:00:00 CET 1900</value>
-        </field>
+        <field name="CHARACTER" value="Four"/>
+        <field name="NUMERICAL" value="4.00"/>
+        <field name="DATE" value="Mon Jan 01 00:00:00 CET 1900"/>
         <field name="LOGICAL"/>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">4.000000000000000000</value>
-        </field>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Fourth memo</value>
-        </field>
+        <field name="FLOAT" value="4.000000000000000000"/>
+        <field name="MEMO" value="Fourth memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Five</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">5.00</value>
-        </field>
-        <field name="DATE">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Mon Dec 31 00:00:00 CET 1900</value>
-        </field>
+        <field name="CHARACTER" value="Five"/>
+        <field name="NUMERICAL" value="5.00"/>
+        <field name="DATE" value="Mon Dec 31 00:00:00 CET 1900"/>
         <field name="LOGICAL"/>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">5.000000000000000000</value>
-        </field>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Fifth memo</value>
-        </field>
+        <field name="FLOAT" value="5.000000000000000000"/>
+        <field name="MEMO" value="Fifth memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Six</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">6.00</value>
-        </field>
-        <field name="DATE">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Tue Jan 01 00:00:00 CET 1901</value>
-        </field>
+        <field name="CHARACTER" value="Six"/>
+        <field name="NUMERICAL" value="6.00"/>
+        <field name="DATE" value="Tue Jan 01 00:00:00 CET 1901"/>
         <field name="LOGICAL"/>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">6.000000000000000000</value>
-        </field>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Sixth memo</value>
-        </field>
+        <field name="FLOAT" value="6.000000000000000000"/>
+        <field name="MEMO" value="Sixth memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Seven</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">7.00</value>
-        </field>
-        <field name="DATE">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Fri Dec 31 00:00:00 CET 1999</value>
-        </field>
+        <field name="CHARACTER" value="Seven"/>
+        <field name="NUMERICAL" value="7.00"/>
+        <field name="DATE" value="Fri Dec 31 00:00:00 CET 1999"/>
         <field name="LOGICAL"/>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">7.000000000000000000</value>
-        </field>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Seventh memo</value>
-        </field>
+        <field name="FLOAT" value="7.000000000000000000"/>
+        <field name="MEMO" value="Seventh memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Eight</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">8.00</value>
-        </field>
-        <field name="DATE">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Wed Dec 31 00:00:00 CET 1919</value>
-        </field>
+        <field name="CHARACTER" value="Eight"/>
+        <field name="NUMERICAL" value="8.00"/>
+        <field name="DATE" value="Wed Dec 31 00:00:00 CET 1919"/>
         <field name="LOGICAL"/>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">8.000000000000000000</value>
-        </field>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Eighth memo</value>
-        </field>
+        <field name="FLOAT" value="8.000000000000000000"/>
+        <field name="MEMO" value="Eighth memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Nine</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">9.00</value>
-        </field>
+        <field name="CHARACTER" value="Nine"/>
+        <field name="NUMERICAL" value="9.00"/>
         <field name="DATE"/>
         <field name="LOGICAL"/>
         <field name="FLOAT"/>
-        <field name="MEMO">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Ninth memo</value>
-        </field>
+        <field name="MEMO" value="Ninth memo"/>
     </row>
     <row>
-        <field name="CHARACTER">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Ten records stored in this database</value>
-        </field>
-        <field name="NUMERICAL">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">10.00</value>
-        </field>
+        <field name="CHARACTER" value="Ten records stored in this database"/>
+        <field name="NUMERICAL" value="10.00"/>
         <field name="DATE"/>
         <field name="LOGICAL"/>
-        <field name="FLOAT">
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0.100000000000000000</value>
-        </field>
+        <field name="FLOAT" value="0.100000000000000000"/>
         <field name="MEMO"/>
     </row>
 </data>
