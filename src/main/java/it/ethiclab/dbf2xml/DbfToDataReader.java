@@ -41,6 +41,7 @@ public class DbfToDataReader implements DataReader {
                 Row row = new Row();
                 Object[] rowObjects = reader.nextRecord();
                 for (int j = 0; j < numberOfFields; j++) {
+if (rowObjects == null) continue;
                     DBFField field = reader.getField(j);
                     Object obj = rowObjects[j];
                     String s = cleanTextContent(obj == null ? null : obj.toString());
