@@ -8,17 +8,13 @@ public class DataToXmlWriterTest {
 
     @Test
     public void testException() throws Exception {
-        assertThatThrownBy(() -> new DataToXmlWriter().write(null, null, null))
-            .isInstanceOf(ApplicationRuntimeException.class);
+        assertThatThrownBy(() -> new DataToXmlWriter().write(null))
+            .isInstanceOf(RuntimeException.class);
     }
 
     @Test
     public void testFileDoesNotExist() throws Exception {
-        File f = new File("target/data.xml");
-        f.delete();
-        assertThat(f).doesNotExist();
-        new DataToXmlWriter().write("DATA", f.getAbsolutePath(), new Data());
-        assertThat(f).exists();
-        assertThat(Utils.readFile(f.getAbsolutePath())).isEqualTo(Utils.readFile("src/test/resources/data.xml"));
+        assertThat(new DataToXmlWriter().write(new Data()))
+            .isEqualTo("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<data/>\n");
     }
 }

@@ -5,7 +5,7 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
 
-public class DbfToDataReader implements DataReader {
+public class DbfToDataReader {
 
     private void resolveMemoFile(DBFReader reader, File dbf) {
         String base = dbf.getName().substring(0, dbf.getName().length() - 4);
@@ -19,9 +19,7 @@ public class DbfToDataReader implements DataReader {
         }
     }
 
-    @Override
-    public Data read(String entityName, String sourceSpecs) {
-        String dbfname = sourceSpecs;
+    public Data read(final String dbfname) {
         Data data = new Data();
         File dbf = new File(dbfname);
         String enc = "windows-1252";
@@ -52,7 +50,7 @@ if (rowObjects == null) continue;
             }
             return data;
         } catch (IOException e) {
-            throw new ApplicationRuntimeException(e);
+            throw new RuntimeException(e);
         } finally {
             if (is != null) {
                 DBFUtils.close(is);
